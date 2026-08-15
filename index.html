@@ -204,15 +204,26 @@
       window.EJS_gameUrl = romUrl;
       window.EJS_gameName = game.title;
       window.EJS_startOnLoaded = true;
-      window.EJS_pathtodata = 'https://cdn.jsdelivr.net/gh/emulatorjs/emulatorjs@latest/data/';
+      window.EJS_language = 'en-US';
+      window.EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
 
       const oldLoader = document.getElementById('ejs-loader');
       if (oldLoader) oldLoader.remove();
+      const oldNipple = document.getElementById('ejs-nipple');
+      if (oldNipple) oldNipple.remove();
 
-      const script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/gh/emulatorjs/emulatorjs@latest/data/loader.js';
-      script.id = 'ejs-loader';
-      document.body.appendChild(script);
+      const nippleScript = document.createElement('script');
+      nippleScript.src = 'https://cdn.jsdelivr.net/npm/nipplejs@0.10.1/dist/nipplejs.min.js';
+      nippleScript.id = 'ejs-nipple';
+      
+      nippleScript.onload = () => {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.emulatorjs.org/stable/data/loader.js';
+        script.id = 'ejs-loader';
+        document.body.appendChild(script);
+      };
+
+      document.body.appendChild(nippleScript);
     }
 
     function closeEmulator() {
@@ -220,13 +231,11 @@
       document.getElementById('emulator').innerHTML = '';
       const loader = document.getElementById('ejs-loader');
       if (loader) loader.remove();
+      const nipple = document.getElementById('ejs-nipple');
+      if (nipple) nipple.remove();
       location.reload();
     }
 
-    renderGames();
-  </script>
-</body>
-</html>
     renderGames();
   </script>
 </body>
