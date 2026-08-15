@@ -165,7 +165,7 @@
       { title: "Neo Bomberman", rom: "neobombe.zip", core: "mame2003_plus", cover: getCover("neobombe") },
       { title: "Neo Drift Out", rom: "neodrift.zip", core: "mame2003_plus", cover: getCover("neodrift") },
       { title: "Neo Pong", rom: "neopong.zip", core: "mame2003_plus", cover: getCover("neopong") },
-      { title: "Ninja Master's", rom: "ninjamas.zip", core: "mame2003_plus", cover: getCover("ninjamas") }
+      { title: "Ninja Master's", rom: "ninjamas.zip", core: "mame2003_plus", core: "mame2003_plus", cover: getCover("ninjamas") }
     ];
 
     const grid = document.getElementById('game-grid');
@@ -198,7 +198,18 @@
 
       const romUrl = new URL(`roms/${game.rom}`, window.location.href).href;
 
-      delete window.EJS_emulator;
+      // Передаём параметры конфигурации через единый объект EJS_config
+      window.EJS_config = {
+        player: '#emulator',
+        core: game.core,
+        gameUrl: romUrl,
+        gameName: game.title,
+        startOnLoaded: true,
+        language: 'en-US',
+        pathtodata: 'https://cdn.emulatorjs.org/stable/data/'
+      };
+
+      // Дублируем глобально для обратной совместимости
       window.EJS_player = '#emulator';
       window.EJS_core = game.core;
       window.EJS_gameUrl = romUrl;
@@ -229,10 +240,6 @@
     function closeEmulator() {
       document.getElementById('emulator-container').style.display = 'none';
       document.getElementById('emulator').innerHTML = '';
-      const loader = document.getElementById('ejs-loader');
-      if (loader) loader.remove();
-      const nipple = document.getElementById('ejs-nipple');
-      if (nipple) nipple.remove();
       location.reload();
     }
 
@@ -240,3 +247,4 @@
   </script>
 </body>
 </html>
+   
