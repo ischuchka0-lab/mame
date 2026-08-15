@@ -92,6 +92,10 @@
       cursor: pointer;
       font-weight: bold;
     }
+    #emulator {
+      width: 100%;
+      height: 100%;
+    }
   </style>
 </head>
 <body>
@@ -208,11 +212,25 @@
     function launchGame(game) {
       document.getElementById('emulator-container').style.display = 'block';
       
+      // Очищаем предыдущий экземпляр эмулятора
+      const emuDiv = document.getElementById('emulator');
+      emuDiv.innerHTML = '';
+
+      // Формируем прямой абсолютный URL к файлу рома
+      const romUrl = new URL(`roms/${game.rom}`, window.location.href).href;
+
+      // Глобальная конфигурация EmulatorJS
       window.EJS_player = '#emulator';
       window.EJS_core = game.core;
-      window.EJS_gameUrl = `roms/${game.rom}`; // Путь к папке с ромами
+      window.EJS_gameUrl = romUrl;
+      window.EJS_gameName = game.title;
+      window.EJS_startOnLoaded = true; // Автозапуск рома без выхода в меню RetroArch
       window.EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
-      
+
+      // Перезагружаем скрипт для инициализации
+      const oldLoader = document.getElementById('ejs-loader');
+      if (oldLoader) oldLoader.remove();
+
       const script = document.createElement('script');
       script.src = 'https://cdn.emulatorjs.org/stable/data/loader.js';
       script.id = 'ejs-loader';
