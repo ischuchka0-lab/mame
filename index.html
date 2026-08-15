@@ -5,22 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Arcade & MAME Catalog</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background-color: #121212;
       color: #ffffff;
       padding: 20px;
     }
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #00e676;
-    }
+    h1 { text-align: center; margin-bottom: 20px; color: #00e676; }
     .search-box {
       width: 100%;
       max-width: 500px;
@@ -52,10 +44,7 @@
       padding: 10px;
       text-align: center;
     }
-    .card:hover {
-      transform: translateY(-4px);
-      background-color: #2a2a2a;
-    }
+    .card:hover { transform: translateY(-4px); background-color: #2a2a2a; }
     .card img {
       width: 100%;
       height: 180px;
@@ -63,12 +52,7 @@
       border-radius: 4px;
       background-color: #000;
     }
-    .card .title {
-      margin-top: 10px;
-      font-size: 14px;
-      font-weight: 600;
-      line-height: 1.2;
-    }
+    .card .title { margin-top: 10px; font-size: 14px; font-weight: 600; line-height: 1.2; }
     #emulator-container {
       display: none;
       position: fixed;
@@ -92,15 +76,12 @@
       cursor: pointer;
       font-weight: bold;
     }
-    #emulator {
-      width: 100%;
-      height: 100%;
-    }
+    #emulator { width: 100%; height: 100%; }
   </style>
 </head>
 <body>
 
-  <h1>Arcade / MAME Arcade</h1>
+  <h1>Arcade / MAME Catalog</h1>
   <input type="text" id="search" class="search-box" placeholder="Поиск игры...">
 
   <div class="grid" id="game-grid"></div>
@@ -115,76 +96,76 @@
       `https://thumbnails.libretro.com/MAME/Named_Boxarts/${encodeURIComponent(name)}.png`;
 
     const GAMES_LIST = [
-      { title: "Three Wonders", rom: "3wonders.zip", core: "mame", cover: getCover("3wonders") },
-      { title: "2020 Super Baseball", rom: "2020bb.zip", core: "mame", cover: getCover("2020bb") },
-      { title: "Alpha Mission II", rom: "alpham2.zip", core: "mame", cover: getCover("alpham2") },
-      { title: "Andro Dunos", rom: "androdun.zip", core: "mame", cover: getCover("androdun") },
-      { title: "Baseball Stars Professional", rom: "bjourney.zip", core: "mame", cover: getCover("bjourney") },
-      { title: "Baseball Stars 2", rom: "bstars2.zip", core: "mame", cover: getCover("bstars2") },
-      { title: "Burning Fight", rom: "burningf.zip", core: "mame", cover: getCover("burningf") },
-      { title: "Captain Commando", rom: "captcomm.zip", core: "mame", cover: getCover("captcomm") },
-      { title: "Carrier Air Wing", rom: "cawing.zip", core: "mame", cover: getCover("cawing") },
-      { title: "Crossed Swords", rom: "crsword.zip", core: "mame", cover: getCover("crsword") },
-      { title: "Captain Tomaday", rom: "ctomaday.zip", core: "mame", cover: getCover("ctomaday") },
-      { title: "Capcom World 2", rom: "cworld2j.zip", core: "mame", cover: getCover("cworld2j") },
-      { title: "Cyber-Lip", rom: "Cyberlip.zip", core: "mame", cover: getCover("cyberlip") },
-      { title: "Dungeons & Dragons: Tower of Doom", rom: "ddtod.zip", core: "mame", cover: getCover("ddtod") },
-      { title: "Dungeons & Dragons: Tower of Doom (Alt)", rom: "ddtoda.zip", core: "mame", cover: getCover("ddtoda") },
-      { title: "Cadillacs and Dinosaurs", rom: "dino.zip", core: "mame", cover: getCover("dino") },
-      { title: "Diplodocus", rom: "Diplodocus.fba", core: "fba", cover: getCover("diplodocus") },
-      { title: "Dynasty Wars", rom: "dynwar.zip", core: "mame", cover: getCover("dynwar") },
-      { title: "Eco Fighters", rom: "ecofghtr.zip", core: "mame", cover: getCover("ecofghtr") },
-      { title: "Eight Man", rom: "eightman.zip", core: "mame", cover: getCover("eightman") },
-      { title: "Fatal Fury 2", rom: "fatfury2.zip", core: "mame", cover: getCover("fatfury2") },
-      { title: "Football Frenzy", rom: "fbfrenzy.zip", core: "mame", cover: getCover("fbfrenzy") },
-      { title: "Final Fight", rom: "ffight.zip", core: "mame", cover: getCover("ffight") },
-      { title: "Final Fight (Japan)", rom: "ffightj.zip", core: "mame", cover: getCover("ffightj") },
-      { title: "Galaxy Fight: Universal Warriors", rom: "galaxyfg.zip", core: "mame", cover: getCover("galaxyfg") },
-      { title: "Ghostlop", rom: "ghostlop.zip", core: "mame", cover: getCover("ghostlop") },
-      { title: "Ghouls 'n Ghosts", rom: "ghouls.zip", core: "mame", cover: getCover("ghouls") },
-      { title: "Ghouls 'n Ghosts (US)", rom: "ghoulsu.zip", core: "mame", cover: getCover("ghoulsu") },
-      { title: "Ghost Pilots", rom: "gpilots.zip", core: "mame", cover: getCover("gpilots") },
-      { title: "Kabuki Klash", rom: "kabukikl.zip", core: "mame", cover: getCover("kabukikl") },
-      { title: "Kizuna Encounter", rom: "kizuna.zip", core: "mame", cover: getCover("kizuna") },
-      { title: "Knights of the Round", rom: "knights.zip", core: "mame", cover: getCover("knights") },
-      { title: "Knights of the Round (US)", rom: "knightsu.zip", core: "mame", cover: getCover("knightsu") },
-      { title: "The King of Fighters Collection", rom: "kof.fba", core: "fba", cover: getCover("kof94") },
-      { title: "The King of Fighters '94", rom: "kof94.zip", core: "mame", cover: getCover("kof94") },
-      { title: "The King of Fighters '97", rom: "kof97.fba", core: "fba", cover: getCover("kof97") },
-      { title: "The King of Fighters '98", rom: "kof98.fba", core: "fba", cover: getCover("kof98") },
-      { title: "The King of Fighters 2000", rom: "kof2000.fba", core: "fba", cover: getCover("kof2000") },
-      { title: "The King of Fighters 2002", rom: "kof2002.fba", core: "fba", cover: getCover("kof2002") },
-      { title: "King of the Monsters 2", rom: "kotm2.zip", core: "mame", cover: getCover("kotm2") },
-      { title: "Lost Worlds / Forgotten Worlds", rom: "lostwrld.zip", core: "mame", cover: getCover("lostwrld") },
-      { title: "Last Resort", rom: "lresort.zip", core: "mame", cover: getCover("lresort") },
-      { title: "Magical Drop II", rom: "magdrop2.zip", core: "mame", cover: getCover("magdrop2") },
-      { title: "Magical Drop III", rom: "magdrop3.zip", core: "mame", cover: getCover("magdrop3") },
-      { title: "Muscle Bomber Duo", rom: "mbombrdj.zip", core: "mame", cover: getCover("mbombrd") },
-      { title: "Mega Man: The Power Battle", rom: "megaman.zip", core: "mame", cover: getCover("megaman") },
-      { title: "Mega Man 2: The Power Fighters", rom: "megaman2.zip", core: "mame", cover: getCover("megaman2") },
-      { title: "Mega Man 2: The Power Fighters (Alt)", rom: "megamn2a.zip", core: "mame", cover: getCover("megamn2a") },
-      { title: "Metal Slug 3", rom: "Metal slug 3.fba", core: "fba", cover: getCover("mslug3") },
-      { title: "Metal Slug 4", rom: "Metal Slug 4.fba", core: "fba", cover: getCover("mslug4") },
-      { title: "Metal Slug", rom: "METAL SLUG.fba", core: "fba", cover: getCover("mslug") },
-      { title: "Metal Slug 1", rom: "METAL SLUG1.fba", core: "fba", cover: getCover("mslug") },
-      { title: "Metal Slug 2", rom: "METAL SLUG2.fba", core: "fba", cover: getCover("mslug2") },
-      { title: "Metal Slug 5", rom: "METAL SLUG5.fba", core: "fba", cover: getCover("mslug5") },
-      { title: "Minasan no Okage-sama desu", rom: "minasan.zip", core: "mame", cover: getCover("minasan") },
-      { title: "Mahjong Kyoretsuden", rom: "mosyougi.zip", core: "mame", cover: getCover("mosyougi") },
-      { title: "Metal Slug", rom: "mslug.zip", core: "mame", cover: getCover("mslug") },
-      { title: "The Magic Crystal / Magic Sword", rom: "msword.zip", core: "mame", cover: getCover("msword") },
-      { title: "Magic Sword (Japan)", rom: "mswordj.zip", core: "mame", cover: getCover("mswordj") },
-      { title: "Magic Sword (Revision 1)", rom: "mswordr1.zip", core: "mame", cover: getCover("mswordr1") },
-      { title: "Magic Sword (US)", rom: "mswordu.zip", core: "mame", cover: getCover("mswordu") },
-      { title: "Mega Twins", rom: "mtwins.zip", core: "mame", cover: getCover("mtwins") },
-      { title: "Mutation Nation", rom: "mutnat.zip", core: "mame", cover: getCover("mutnat") },
-      { title: "Ninja Combat", rom: "ncombat.zip", core: "mame", cover: getCover("ncombat") },
-      { title: "Ninja Commando", rom: "ncommand.zip", core: "mame", cover: getCover("ncommand") },
-      { title: "Nemo", rom: "nemo.zip", core: "mame", cover: getCover("nemo") },
-      { title: "Neo Bomberman", rom: "neobombe.zip", core: "mame", cover: getCover("neobombe") },
-      { title: "Neo Drift Out", rom: "neodrift.zip", core: "mame", cover: getCover("neodrift") },
-      { title: "Neo Pong", rom: "neopong.zip", core: "mame", cover: getCover("neopong") },
-      { title: "Ninja Master's", rom: "ninjamas.zip", core: "mame", cover: getCover("ninjamas") }
+      { title: "Three Wonders", rom: "3wonders.zip", core: "mame2003plus", cover: getCover("3wonders") },
+      { title: "2020 Super Baseball", rom: "2020bb.zip", core: "mame2003plus", cover: getCover("2020bb") },
+      { title: "Alpha Mission II", rom: "alpham2.zip", core: "mame2003plus", cover: getCover("alpham2") },
+      { title: "Andro Dunos", rom: "androdun.zip", core: "mame2003plus", cover: getCover("androdun") },
+      { title: "Baseball Stars Professional", rom: "bjourney.zip", core: "mame2003plus", cover: getCover("bjourney") },
+      { title: "Baseball Stars 2", rom: "bstars2.zip", core: "mame2003plus", cover: getCover("bstars2") },
+      { title: "Burning Fight", rom: "burningf.zip", core: "mame2003plus", cover: getCover("burningf") },
+      { title: "Captain Commando", rom: "captcomm.zip", core: "mame2003plus", cover: getCover("captcomm") },
+      { title: "Carrier Air Wing", rom: "cawing.zip", core: "mame2003plus", cover: getCover("cawing") },
+      { title: "Crossed Swords", rom: "crsword.zip", core: "mame2003plus", cover: getCover("crsword") },
+      { title: "Captain Tomaday", rom: "ctomaday.zip", core: "mame2003plus", cover: getCover("ctomaday") },
+      { title: "Capcom World 2", rom: "cworld2j.zip", core: "mame2003plus", cover: getCover("cworld2j") },
+      { title: "Cyber-Lip", rom: "cyberlip.zip", core: "mame2003plus", cover: getCover("cyberlip") },
+      { title: "Dungeons & Dragons: Tower of Doom", rom: "ddtod.zip", core: "mame2003plus", cover: getCover("ddtod") },
+      { title: "Dungeons & Dragons: Tower of Doom (Alt)", rom: "ddtoda.zip", core: "mame2003plus", cover: getCover("ddtoda") },
+      { title: "Cadillacs and Dinosaurs", rom: "dino.zip", core: "mame2003plus", cover: getCover("dino") },
+      { title: "Diplodocus", rom: "diplodocus.fba", core: "fbalpha2012", cover: getCover("diplodocus") },
+      { title: "Dynasty Wars", rom: "dynwar.zip", core: "mame2003plus", cover: getCover("dynwar") },
+      { title: "Eco Fighters", rom: "ecofghtr.zip", core: "mame2003plus", cover: getCover("ecofghtr") },
+      { title: "Eight Man", rom: "eightman.zip", core: "mame2003plus", cover: getCover("eightman") },
+      { title: "Fatal Fury 2", rom: "fatfury2.zip", core: "mame2003plus", cover: getCover("fatfury2") },
+      { title: "Football Frenzy", rom: "fbfrenzy.zip", core: "mame2003plus", cover: getCover("fbfrenzy") },
+      { title: "Final Fight", rom: "ffight.zip", core: "mame2003plus", cover: getCover("ffight") },
+      { title: "Final Fight (Japan)", rom: "ffightj.zip", core: "mame2003plus", cover: getCover("ffightj") },
+      { title: "Galaxy Fight: Universal Warriors", rom: "galaxyfg.zip", core: "mame2003plus", cover: getCover("galaxyfg") },
+      { title: "Ghostlop", rom: "ghostlop.zip", core: "mame2003plus", cover: getCover("ghostlop") },
+      { title: "Ghouls 'n Ghosts", rom: "ghouls.zip", core: "mame2003plus", cover: getCover("ghouls") },
+      { title: "Ghouls 'n Ghosts (US)", rom: "ghoulsu.zip", core: "mame2003plus", cover: getCover("ghoulsu") },
+      { title: "Ghost Pilots", rom: "gpilots.zip", core: "mame2003plus", cover: getCover("gpilots") },
+      { title: "Kabuki Klash", rom: "kabukikl.zip", core: "mame2003plus", cover: getCover("kabukikl") },
+      { title: "Kizuna Encounter", rom: "kizuna.zip", core: "mame2003plus", cover: getCover("kizuna") },
+      { title: "Knights of the Round", rom: "knights.zip", core: "mame2003plus", cover: getCover("knights") },
+      { title: "Knights of the Round (US)", rom: "knightsu.zip", core: "mame2003plus", cover: getCover("knightsu") },
+      { title: "The King of Fighters Collection", rom: "kof.fba", core: "fbalpha2012", cover: getCover("kof94") },
+      { title: "The King of Fighters '94", rom: "kof94.zip", core: "mame2003plus", cover: getCover("kof94") },
+      { title: "The King of Fighters '97", rom: "kof97.fba", core: "fbalpha2012", cover: getCover("kof97") },
+      { title: "The King of Fighters '98", rom: "kof98.fba", core: "fbalpha2012", cover: getCover("kof98") },
+      { title: "The King of Fighters 2000", rom: "kof2000.fba", core: "fbalpha2012", cover: getCover("kof2000") },
+      { title: "The King of Fighters 2002", rom: "kof2002.fba", core: "fbalpha2012", cover: getCover("kof2002") },
+      { title: "King of the Monsters 2", rom: "kotm2.zip", core: "mame2003plus", cover: getCover("kotm2") },
+      { title: "Lost Worlds / Forgotten Worlds", rom: "lostwrld.zip", core: "mame2003plus", cover: getCover("lostwrld") },
+      { title: "Last Resort", rom: "lresort.zip", core: "mame2003plus", cover: getCover("lresort") },
+      { title: "Magical Drop II", rom: "magdrop2.zip", core: "mame2003plus", cover: getCover("magdrop2") },
+      { title: "Magical Drop III", rom: "magdrop3.zip", core: "mame2003plus", cover: getCover("magdrop3") },
+      { title: "Muscle Bomber Duo", rom: "mbombrdj.zip", core: "mame2003plus", cover: getCover("mbombrd") },
+      { title: "Mega Man: The Power Battle", rom: "megaman.zip", core: "mame2003plus", cover: getCover("megaman") },
+      { title: "Mega Man 2: The Power Fighters", rom: "megaman2.zip", core: "mame2003plus", cover: getCover("megaman2") },
+      { title: "Mega Man 2: The Power Fighters (Alt)", rom: "megamn2a.zip", core: "mame2003plus", cover: getCover("megamn2a") },
+      { title: "Metal Slug 3", rom: "metal slug 3.fba", core: "fbalpha2012", cover: getCover("mslug3") },
+      { title: "Metal Slug 4", rom: "metal slug 4.fba", core: "fbalpha2012", cover: getCover("mslug4") },
+      { title: "Metal Slug", rom: "metal slug.fba", core: "fbalpha2012", cover: getCover("mslug") },
+      { title: "Metal Slug 1", rom: "metal slug1.fba", core: "fbalpha2012", cover: getCover("mslug") },
+      { title: "Metal Slug 2", rom: "metal slug2.fba", core: "fbalpha2012", cover: getCover("mslug2") },
+      { title: "Metal Slug 5", rom: "metal slug5.fba", core: "fbalpha2012", cover: getCover("mslug5") },
+      { title: "Minasan no Okage-sama desu", rom: "minasan.zip", core: "mame2003plus", cover: getCover("minasan") },
+      { title: "Mahjong Kyoretsuden", rom: "mosyougi.zip", core: "mame2003plus", cover: getCover("mosyougi") },
+      { title: "Metal Slug", rom: "mslug.zip", core: "mame2003plus", cover: getCover("mslug") },
+      { title: "The Magic Crystal / Magic Sword", rom: "msword.zip", core: "mame2003plus", cover: getCover("msword") },
+      { title: "Magic Sword (Japan)", rom: "mswordj.zip", core: "mame2003plus", cover: getCover("mswordj") },
+      { title: "Magic Sword (Revision 1)", rom: "mswordr1.zip", core: "mame2003plus", cover: getCover("mswordr1") },
+      { title: "Magic Sword (US)", rom: "mswordu.zip", core: "mame2003plus", cover: getCover("mswordu") },
+      { title: "Mega Twins", rom: "mtwins.zip", core: "mame2003plus", cover: getCover("mtwins") },
+      { title: "Mutation Nation", rom: "mutnat.zip", core: "mame2003plus", cover: getCover("mutnat") },
+      { title: "Ninja Combat", rom: "ncombat.zip", core: "mame2003plus", cover: getCover("ncombat") },
+      { title: "Ninja Commando", rom: "ncommand.zip", core: "mame2003plus", cover: getCover("ncommand") },
+      { title: "Nemo", rom: "nemo.zip", core: "mame2003plus", cover: getCover("nemo") },
+      { title: "Neo Bomberman", rom: "neobombe.zip", core: "mame2003plus", cover: getCover("neobombe") },
+      { title: "Neo Drift Out", rom: "neodrift.zip", core: "mame2003plus", cover: getCover("neodrift") },
+      { title: "Neo Pong", rom: "neopong.zip", core: "mame2003plus", cover: getCover("neopong") },
+      { title: "Ninja Master's", rom: "ninjamas.zip", core: "mame2003plus", cover: getCover("ninjamas") }
     ];
 
     const grid = document.getElementById('game-grid');
@@ -211,23 +192,24 @@
 
     function launchGame(game) {
       document.getElementById('emulator-container').style.display = 'block';
-      
-      // Очищаем предыдущий экземпляр эмулятора
+
+      // Очищаем предыдущее состояние
       const emuDiv = document.getElementById('emulator');
       emuDiv.innerHTML = '';
 
-      // Формируем прямой абсолютный URL к файлу рома
+      // Полный путь к рому
       const romUrl = new URL(`roms/${game.rom}`, window.location.href).href;
 
-      // Глобальная конфигурация EmulatorJS
+      // Глобальная настройка EmulatorJS
+      delete window.EJS_emulator;
       window.EJS_player = '#emulator';
       window.EJS_core = game.core;
       window.EJS_gameUrl = romUrl;
       window.EJS_gameName = game.title;
-      window.EJS_startOnLoaded = true; // Автозапуск рома без выхода в меню RetroArch
+      window.EJS_startOnLoaded = true;
       window.EJS_pathtodata = 'https://cdn.emulatorjs.org/stable/data/';
 
-      // Перезагружаем скрипт для инициализации
+      // Пересоздаем script loader для чистой инициализации
       const oldLoader = document.getElementById('ejs-loader');
       if (oldLoader) oldLoader.remove();
 
@@ -242,6 +224,7 @@
       document.getElementById('emulator').innerHTML = '';
       const loader = document.getElementById('ejs-loader');
       if (loader) loader.remove();
+      location.reload(); // Перезагрузка страницы для очистки глобального состояния Wasm
     }
 
     renderGames();
